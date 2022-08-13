@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { filter, from, Observable } from 'rxjs';
+import { filter, from, Observable, Subject } from 'rxjs';
 import { map } from 'rxjs';
 import { DataService } from './app/data.service';
 
@@ -12,9 +12,7 @@ import { DataService } from './app/data.service';
 export class AppComponent implements OnInit {
   title = 'AngularObservables';
 
-  constructor(private dataService: DataService) {
-    
-  }
+  constructor(private dataService: DataService) {}
 
   // myObservable = new Observable((observer) => {
   //   console.log('Observable starts');
@@ -52,11 +50,27 @@ export class AppComponent implements OnInit {
     })
   );
 
+  randomNumObs = new Observable((observer) => {
+    observer.next(Math.random());
+  });
+
+  randomNumSubject = new Subject();
+
   ngOnInit() {
     // this.myObservable.subscribe({
     //   next: (val) => console.log(val),
     //   error: (err) => console.error(err.message),
     //   complete: () => console.log('Observable complete'),
     // });
+
+    this.randomNumSubject.subscribe({
+      next: (val) => console.log('subscription 1:', val),
+    });
+
+    this.randomNumSubject.subscribe({
+      next: (val) => console.log('subscription 2:', val),
+    });
+
+    this.randomNumSubject.next(Math.random());
   }
 }
