@@ -1,14 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { filter, from, Observable } from 'rxjs';
 import { map } from 'rxjs';
+import { DataService } from './app/data.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
+  providers: [DataService],
 })
 export class AppComponent implements OnInit {
   title = 'AngularObservables';
+
+  constructor(private dataService: DataService) {
+    
+  }
 
   // myObservable = new Observable((observer) => {
   //   console.log('Observable starts');
@@ -46,20 +52,11 @@ export class AppComponent implements OnInit {
     })
   );
 
-  // transformedObs = this.myObservable.pipe(
-  //   map((val) => {
-  //     return val * 5;
-  //   }),
-  //   filter((val) => {
-  //     return val >= 30;
-  //   })
-  // );
-
   ngOnInit() {
-    this.myObservable.subscribe({
-      next: (val) => console.log(val),
-      error: (err) => console.error(err.message),
-      complete: () => console.log('Observable complete'),
-    });
+    // this.myObservable.subscribe({
+    //   next: (val) => console.log(val),
+    //   error: (err) => console.error(err.message),
+    //   complete: () => console.log('Observable complete'),
+    // });
   }
 }
