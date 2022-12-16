@@ -10,9 +10,9 @@ export class Comp2Component implements OnInit {
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
-    this.dataService.dataEmitter.subscribe((value) => {
-      this.inputText = value;
-    });
+    // this.dataService.dataEmitter.subscribe((value) => {
+    //   this.inputText = value;
+    // });
   }
 
   inputText: string;

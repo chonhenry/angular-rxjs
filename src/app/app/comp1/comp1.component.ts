@@ -15,6 +15,6 @@ export class Comp1Component implements OnInit {
 
   OnBtnClick() {
     // console.log(this.enteredText);
-    this.dataService.raiseDataEmitterEvent(this.enteredText);
+    // this.dataService.raiseDataEmitterEvent(this.enteredText);
   }
 }
